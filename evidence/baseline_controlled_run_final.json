@@ -1,0 +1,110 @@
+{
+  "target": "vulnerable",
+  "execution": "local Flask test_client; no external network target",
+  "working_directory": "/Users/major/kmu/cybersecuurity/challenge1",
+  "cases": {
+    "A_no_image": {
+      "status": 400,
+      "content_type": "application/json",
+      "json": {
+        "error": "No image provided"
+      },
+      "body_length": 30,
+      "body_excerpt": "{\"error\":\"No image provided\"}\n"
+    },
+    "B_valid_image": {
+      "status": 500,
+      "content_type": "text/html; charset=utf-8",
+      "json": null,
+      "body_length": 265,
+      "body_excerpt": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n"
+    },
+    "C_non_image": {
+      "status": 500,
+      "content_type": "text/html; charset=utf-8",
+      "json": null,
+      "body_length": 265,
+      "body_excerpt": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>\n"
+    },
+    "preprocessing_observation": {
+      "shape": [
+        300,
+        300,
+        3
+      ],
+      "dtype": "uint8",
+      "decoded": true
+    },
+    "model_shape_rejection": {
+      "exception_type": "ValueError",
+      "message": "Model Error: Invalid input shape. Expected (1, 224, 224, 3), got (300, 300, 3)"
+    },
+    "isolated_policy_and_response": {
+      "status": 200,
+      "content_type": "application/json",
+      "json": {
+        "access": true,
+        "debug_info": {
+          "internal_model_path": "./models/face_recognition_model.pkl",
+          "model_version": "v1.2.4-beta",
+          "saved_log_path": "./logs/baseline_isolated_b2eb5c93f6ef48259e4cf6638b3da1d6.png",
+          "server_ip": "192.168.1.50"
+        },
+        "face_confidence": 0.98,
+        "objects_detected": [
+          {
+            "confidence": 0.95,
+            "label": "person"
+          },
+          {
+            "confidence": 0.88,
+            "label": "knife"
+          },
+          {
+            "confidence": 0.75,
+            "label": "backpack"
+          }
+        ]
+      },
+      "body_length": 385,
+      "body_excerpt": "{\"access\":true,\"debug_info\":{\"internal_model_path\":\"./models/face_recognition_model.pkl\",\"model_version\":\"v1.2.4-beta\",\"saved_log_path\":\"./logs/baseline_isolated_b2eb5c93f6ef48259e4cf6638b3da1d6.png\",\"server_ip\":\"192.168.1.50\"},\"face_confidence\":0.98,\"objects_detected\":[{\"confidence\":0.95,\"label\":\"person\"},{\"confidence\":0.88,\"label\":\"knife\"},{\"confidence\":0.75,\"label\":\"backpack\"}]}\n"
+    },
+    "controlled_filename_path_test": {
+      "status": 200,
+      "content_type": "application/json",
+      "json": {
+        "access": true,
+        "debug_info": {
+          "internal_model_path": "./models/face_recognition_model.pkl",
+          "model_version": "v1.2.4-beta",
+          "saved_log_path": "./logs/../logs/baseline_controlled_1c416159ed594b9385491e73fceafe56.png",
+          "server_ip": "192.168.1.50"
+        },
+        "face_confidence": 0.98,
+        "objects_detected": [
+          {
+            "confidence": 0.95,
+            "label": "person"
+          },
+          {
+            "confidence": 0.88,
+            "label": "knife"
+          },
+          {
+            "confidence": 0.75,
+            "label": "backpack"
+          }
+        ]
+      },
+      "body_length": 395,
+      "body_excerpt": "{\"access\":true,\"debug_info\":{\"internal_model_path\":\"./models/face_recognition_model.pkl\",\"model_version\":\"v1.2.4-beta\",\"saved_log_path\":\"./logs/../logs/baseline_controlled_1c416159ed594b9385491e73fceafe56.png\",\"server_ip\":\"192.168.1.50\"},\"face_confidence\":0.98,\"objects_detected\":[{\"confidence\":0.95,\"label\":\"person\"},{\"confidence\":0.88,\"label\":\"knife\"},{\"confidence\":0.75,\"label\":\"backpack\"}]}\n",
+      "controlled_in_lab_path_exists": true,
+      "outside_lab_attempted": false
+    },
+    "configuration_observation": {
+      "max_content_length": null,
+      "debug": false,
+      "source_file": "/Users/major/kmu/cybersecuurity/challenge1/lab_access_api.py"
+    }
+  }
+}

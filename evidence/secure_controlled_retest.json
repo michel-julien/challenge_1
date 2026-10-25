@@ -1,0 +1,80 @@
+{
+  "target": "secure",
+  "execution": "local Flask test_client; no external network target",
+  "working_directory": "/Users/major/kmu/cybersecuurity/challenge1",
+  "cases": {
+    "A_no_image": {
+      "status": 400,
+      "content_type": "application/json",
+      "json": {
+        "error": "No image provided"
+      },
+      "body_length": 30,
+      "body_excerpt": "{\"error\":\"No image provided\"}\n"
+    },
+    "B_valid_image": {
+      "status": 200,
+      "content_type": "application/json",
+      "json": {
+        "access": false
+      },
+      "body_length": 17,
+      "body_excerpt": "{\"access\":false}\n"
+    },
+    "C_non_image": {
+      "status": 400,
+      "content_type": "application/json",
+      "json": {
+        "error": "Invalid image file"
+      },
+      "body_length": 31,
+      "body_excerpt": "{\"error\":\"Invalid image file\"}\n"
+    },
+    "D_oversized_request": {
+      "status": 413,
+      "content_type": "application/json",
+      "json": {
+        "error": "Request too large"
+      },
+      "body_length": 30,
+      "body_excerpt": "{\"error\":\"Request too large\"}\n"
+    },
+    "preprocessing_observation": {
+      "shape": [
+        1,
+        224,
+        224,
+        3
+      ],
+      "dtype": "float32",
+      "minimum": 0.0,
+      "maximum": 0.0
+    },
+    "model_loading_observation": {
+      "face_model_type": "MockFaceRecognitionModel",
+      "object_model_type": "MockObjectDetectionModel",
+      "face_model_sha256": "7ca9b20f377c14942da33d403467e2402418e0c10e8ea660787435c6c681d056",
+      "object_model_sha256": "74fd46269e7bc83e59531f24262968cbfca6273e4055d023a646783e7d30692b"
+    },
+    "controlled_filename_path_test": {
+      "status": 200,
+      "content_type": "application/json",
+      "json": {
+        "access": false
+      },
+      "body_length": 17,
+      "body_excerpt": "{\"access\":false}\n",
+      "generated_files": [
+        "upload_2fa4b5b311144d3d8b68e8f077779800.png",
+        "upload_72b998746af14d59b2d8832f402516a8.png"
+      ],
+      "all_generated_files_direct_children": true,
+      "outside_lab_attempted": false
+    },
+    "configuration_observation": {
+      "max_content_length": 1048576,
+      "debug": false,
+      "upload_dir": "/Users/major/kmu/cybersecuurity/challenge1/logs/secure_uploads"
+    }
+  }
+}

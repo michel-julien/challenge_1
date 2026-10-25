@@ -1,0 +1,22 @@
+test_missing_image_is_rejected (test_secure_api.SecureApiTests.test_missing_image_is_rejected) ... ok
+test_model_failure_returns_generic_503 (test_secure_api.SecureApiTests.test_model_failure_returns_generic_503) ... [2026-10-25 21:47:05,653] ERROR in lab_access_api_secure: Model failure request_id=17bee321703b4626b1b9c446c154c5c2 type=RuntimeError
+Traceback (most recent call last):
+  File "/Users/major/kmu/cybersecuurity/challenge1/lab_access_api_secure.py", line 290, in check_access
+    face_prediction = face_model.predict(image_tensor)
+  File "/Users/major/kmu/cybersecuurity/challenge1/tests/test_secure_api.py", line 81, in predict
+    raise RuntimeError("simulated local model failure")
+RuntimeError: simulated local model failure
+ok
+test_model_hash_mismatch_is_rejected (test_secure_api.SecureApiTests.test_model_hash_mismatch_is_rejected) ... ok
+test_non_image_is_rejected_without_traceback (test_secure_api.SecureApiTests.test_non_image_is_rejected_without_traceback) ... ok
+test_oversized_request_is_rejected (test_secure_api.SecureApiTests.test_oversized_request_is_rejected) ... ok
+test_preprocessing_has_expected_tensor_contract (test_secure_api.SecureApiTests.test_preprocessing_has_expected_tensor_contract) ... ok
+test_response_has_no_internal_fields (test_secure_api.SecureApiTests.test_response_has_no_internal_fields) ... [2026-10-25 21:47:05,660] INFO in lab_access_api_secure: Access decision request_id=721502cf5c344a1e90a55a3b5d1003f1 access=False
+ok
+test_valid_image_fails_closed_on_simulated_knife (test_secure_api.SecureApiTests.test_valid_image_fails_closed_on_simulated_knife) ... [2026-10-25 21:47:05,662] INFO in lab_access_api_secure: Access decision request_id=50e0f4043476418fa9ab7f644148a84f access=False
+ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.037s
+
+OK

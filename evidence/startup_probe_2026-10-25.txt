@@ -1,0 +1,13 @@
+Command: .venv/bin/python lab_access_api.py
+Environment: local repository sandbox, 2026-10-25
+Exit status: 1
+
+ * Serving Flask app 'lab_access_api'
+ * Debug mode: on
+Operation not permitted
+
+Interpretation: the sandbox denied opening a listening socket. Endpoint tests
+were therefore run with Flask's local test_client, which exercises the same
+request handler without targeting any external system. The existing raw HTTP
+evidence in first_test.txt, first_error.txt, and second_error.txt remains the
+record of earlier local port-based requests.

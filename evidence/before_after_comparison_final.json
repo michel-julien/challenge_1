@@ -1,0 +1,82 @@
+{
+  "execution": "derived only from confirmed local evidence JSON",
+  "baseline_file": "/Users/major/kmu/cybersecuurity/challenge1/evidence/baseline_controlled_run_final.json",
+  "secure_file": "/Users/major/kmu/cybersecuurity/challenge1/evidence/secure_controlled_retest_final_2.json",
+  "status_by_case": {
+    "A_no_image": {
+      "baseline": 400,
+      "secure": 400
+    },
+    "B_valid_image": {
+      "baseline": 500,
+      "secure": 200
+    },
+    "C_non_image": {
+      "baseline": 500,
+      "secure": 400
+    },
+    "D_oversized_request": {
+      "baseline": null,
+      "secure": 413
+    },
+    "controlled_filename_path_test": {
+      "baseline": 200,
+      "secure": 200
+    }
+  },
+  "observations": {
+    "baseline_preprocessing": {
+      "shape": [
+        300,
+        300,
+        3
+      ],
+      "dtype": "uint8",
+      "decoded": true
+    },
+    "secure_preprocessing": {
+      "shape": [
+        1,
+        224,
+        224,
+        3
+      ],
+      "dtype": "float32",
+      "minimum": 0.0,
+      "maximum": 0.0
+    },
+    "baseline_isolated_response": {
+      "access": true,
+      "debug_info": {
+        "internal_model_path": "./models/face_recognition_model.pkl",
+        "model_version": "v1.2.4-beta",
+        "saved_log_path": "./logs/baseline_isolated_b2eb5c93f6ef48259e4cf6638b3da1d6.png",
+        "server_ip": "192.168.1.50"
+      },
+      "face_confidence": 0.98,
+      "objects_detected": [
+        {
+          "confidence": 0.95,
+          "label": "person"
+        },
+        {
+          "confidence": 0.88,
+          "label": "knife"
+        },
+        {
+          "confidence": 0.75,
+          "label": "backpack"
+        }
+      ]
+    },
+    "secure_valid_response": {
+      "access": false
+    },
+    "secure_model_loading": {
+      "face_model_type": "MockFaceRecognitionModel",
+      "object_model_type": "MockObjectDetectionModel",
+      "face_model_sha256": "7ca9b20f377c14942da33d403467e2402418e0c10e8ea660787435c6c681d056",
+      "object_model_sha256": "74fd46269e7bc83e59531f24262968cbfca6273e4055d023a646783e7d30692b"
+    }
+  }
+}

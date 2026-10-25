@@ -1,0 +1,28 @@
+curl -i http://127.0.0.1:5000/
+HTTP/1.1 404 NOT FOUND
+Server: Werkzeug/3.1.9 Python/3.14.7
+Date: Sun, 25 Oct 2026 08:43:53 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 207
+Connection: close
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+
+
+curl -i -X POST http://127.0.0.1:5000/api/access
+HTTP/1.1 400 BAD REQUEST
+Server: Werkzeug/3.1.9 Python/3.14.7
+Date: Sun, 25 Oct 2026 11:14:45 GMT
+Content-Type: application/json
+Content-Length: 35
+Connection: close
+
+{
+  "error": "No image provided"
+}
+
+

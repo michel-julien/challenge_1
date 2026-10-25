@@ -1,0 +1,21 @@
+Environment: .venv/bin/python Python 3.14.7
+
+Direct import probe:
+  import lab_access_api
+  AttributeError: module '__main__' has no attribute 'MockFaceRecognitionModel'
+
+Script startup probe:
+  .venv/bin/python lab_access_api.py
+  * Serving Flask app 'lab_access_api'
+  * Debug mode: on
+  Operation not permitted
+
+Interpretation: the script passed model loading and reached Flask startup; the
+sandbox then denied opening a listening socket. The direct import failure is
+caused by the supplied pickle GLOBAL references to __main__.Mock... and is
+handled explicitly by tests/run_lab_tests.py and the restricted loader in the
+secure implementation.
+
+Observed SHA-256:
+  7ca9b20f377c14942da33d403467e2402418e0c10e8ea660787435c6c681d056  models/face_recognition_model.pkl
+  74fd46269e7bc83e59531f24262968cbfca6273e4055d023a646783e7d30692b  models/object_detection_model.pkl

@@ -1,0 +1,34 @@
+test_malformed_request_gets_generic_json (test_secure_api.SecureApiTests.test_malformed_request_gets_generic_json) ... FAIL
+test_missing_image_is_rejected (test_secure_api.SecureApiTests.test_missing_image_is_rejected) ... ok
+test_model_failure_returns_generic_503 (test_secure_api.SecureApiTests.test_model_failure_returns_generic_503) ... [2026-10-25 21:47:37,196] ERROR in lab_access_api_secure: Model failure request_id=d5d0a819cfac4584ba55771a7dd42e71 type=RuntimeError
+Traceback (most recent call last):
+  File "/Users/major/kmu/cybersecuurity/challenge1/lab_access_api_secure.py", line 290, in check_access
+    face_prediction = face_model.predict(image_tensor)
+  File "/Users/major/kmu/cybersecuurity/challenge1/tests/test_secure_api.py", line 88, in predict
+    raise RuntimeError("simulated local model failure")
+RuntimeError: simulated local model failure
+ok
+test_model_hash_mismatch_is_rejected (test_secure_api.SecureApiTests.test_model_hash_mismatch_is_rejected) ... ok
+test_non_image_is_rejected_without_traceback (test_secure_api.SecureApiTests.test_non_image_is_rejected_without_traceback) ... ok
+test_oversized_request_is_rejected (test_secure_api.SecureApiTests.test_oversized_request_is_rejected) ... ok
+test_preprocessing_has_expected_tensor_contract (test_secure_api.SecureApiTests.test_preprocessing_has_expected_tensor_contract) ... ok
+test_response_has_no_internal_fields (test_secure_api.SecureApiTests.test_response_has_no_internal_fields) ... [2026-10-25 21:47:37,203] INFO in lab_access_api_secure: Access decision request_id=63e9cebde0cd4239bbcaf14dcb56f396 access=False
+ok
+test_valid_image_fails_closed_on_simulated_knife (test_secure_api.SecureApiTests.test_valid_image_fails_closed_on_simulated_knife) ... [2026-10-25 21:47:37,206] INFO in lab_access_api_secure: Access decision request_id=5b870e7c2d2d4e43a4125c3ed5b8f7c9 access=False
+ok
+
+======================================================================
+FAIL: test_malformed_request_gets_generic_json (test_secure_api.SecureApiTests.test_malformed_request_gets_generic_json)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/major/kmu/cybersecuurity/challenge1/tests/test_secure_api.py", line 39, in test_malformed_request_gets_generic_json
+    self.assertEqual(response.get_json(), {"error": "Invalid request"})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'error': 'No image provided'} != {'error': 'Invalid request'}
+- {'error': 'No image provided'}
++ {'error': 'Invalid request'}
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.038s
+
+FAILED (failures=1)
